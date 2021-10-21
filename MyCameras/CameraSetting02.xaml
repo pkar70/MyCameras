@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="MyCameras.CameraSetting02"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyCameras"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+
+    <Grid x:Name="uiGrid">
+        <Grid.RowDefinitions >
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ProgressRing x:Name="uiProcesuje" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" />
+
+        <TextBlock x:Name="uiCount" Grid.ColumnSpan="2" Grid.RowSpan="2" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <ListView  x:Name="uiListaItems" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,10,0,0" Tapped="uiPic_Tapped" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding sResol, Mode=OneWay }"  />
+                        <TextBlock Grid.Row="1" Text="{Binding sSize, Mode=OneWay }"  />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <ScrollViewer Name="uiScroll" Grid.Column="1" ZoomMode="Enabled" MinZoomFactor="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"  VerticalAlignment="Stretch"  HorizontalAlignment="Stretch"   >
+            <Image x:Name="uiPic" />
+        </ScrollViewer>
+
+        <TextBlock Grid.Row="1" Margin="10,10,0,0" Text="Choose resolution, then " x:Uid="uiCamSet2Help" />
+        <Button x:Name="uiNext" Grid.Row="1" Grid.Column="1" Margin="10,10,0,0" Content="Continue &gt;" Click="uiNext_Click" IsEnabled="False" HorizontalAlignment="Right" x:Uid="uiCamSetNext"/>
+
+    </Grid>
+</Page>

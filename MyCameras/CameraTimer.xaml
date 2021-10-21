@@ -1,0 +1,100 @@
+﻿<Page
+    x:Class="MyCameras.CameraTimer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyCameras"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded" Unloaded="Page_Unloaded">
+
+    <Grid Margin="5,5,5,5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListView  x:Name="uiListaItems" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,10,0,0" Tapped="uiItem_Tapped" BorderBrush="Blue" BorderThickness="{Binding iBorder, Mode=OneWay }">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Width="100" Height="100" Source="{Binding sPictureFile, Mode=OneWay }"  />
+                        <TextBlock Grid.Row="1" FontSize="10" Text="{Binding sName, Mode=OneWay }" HorizontalAlignment="Center"  />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <Grid Grid.Column="1">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <TextBlock FontSize="24" x:Name="uiTimerName" HorizontalAlignment="Center"  />
+        <TextBlock x:Name="uiClock" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16"/>
+
+        <TextBlock Grid.Row="1" FontSize="100" HorizontalAlignment="Center" x:Name="uiTimerTime" VerticalAlignment="Center" />
+
+        <TextBlock Grid.Row="2" HorizontalAlignment="Center" x:Name="uiTimerInfo" FontSize="18" Margin="0,0,0,20"/>
+
+        <Grid Grid.Row="3" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Start" Click="uiStart_Click" x:Name="uiStart" HorizontalAlignment="Center"  IsEnabled="false"/>
+            <ToggleButton Grid.Column="1" Content="Pause" Click="uiPause_Click" x:Name="uiPause" HorizontalAlignment="Center" IsEnabled="false" />
+
+        </Grid>
+
+
+        </Grid>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal" x:Name="uiBottomBar" >
+            <AppBarButton Icon="Page" Label="Page">
+                <AppBarButton.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Clock" Click="uiGoClock_Click" />
+                        <MenuFlyoutItem Text="Timer" Click="uiGoTimer_Click" />
+                        <MenuFlyoutItem Text="Gate" Click="uiGoWyjscie_Click" />
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarSeparator/>
+            <AppBarButton Icon="Add" Label="Add"  AllowFocusOnInteraction="True" x:Name="uiAdd">
+                <AppBarButton.Flyout>
+                    <Flyout x:Name="uiAddFlyOut" >
+                    <StackPanel>
+                            <TextBlock HorizontalAlignment="Center" FontSize="18" Text="Add new timer" Margin="2,2,2,10" />
+                            <TextBox Header="Name" x:Name="uiAddName" />
+                            <TextBox Header="Info" x:Name="uiAddInfo" />
+                            <TimePicker Header="Initial value (mm:ss)" x:Name="uiAddValue" ClockIdentifier="24HourClock"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Header="File" x:Name="uiAddFile" IsReadOnly="true"/>
+                                <Button Content="Browse" Click="uiAddBrowse_Click" Grid.Column="1" Margin="5,0,0,0" />
+                            </Grid>    
+                            <ToggleSwitch x:Name="uiAddStore" OnContent="Save definition" OffContent="Only this session" />
+                            <Button HorizontalAlignment="Center" Margin="2,10,2,0" Click="uiAdd_Click" Content="Add!"/>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+                </AppBarButton> 
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

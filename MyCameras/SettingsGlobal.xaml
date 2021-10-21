@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="MyCameras.SettingsGlobal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyCameras"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+    <Grid Margin="5,5,5,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" x:Uid="uiSettingsGlobalTitle" FontSize="18" Text="Global settings" Margin="0,0,0,20"/>
+
+        <ScrollViewer Grid.Row="1">
+    <StackPanel >
+        <ToggleSwitch x:Name="uiNightRed" Header="Clock colour at night" OnContent ="Red" OffContent="System default"/>
+        <ToggleSwitch x:Name="uiForcePolish" Header="Force POLISH date format" />
+        <ToggleSwitch x:Name="uiUseCamera" Header="Take photos"/>
+                <ToggleSwitch x:Name="uiUseOneDrive" Header="Upload photos"/>
+                <ToggleSwitch x:Name="uiUseCalendar" Header="Use calendar"/>
+        <ToggleSwitch x:Name="uiUseWiFiReset" Header="Try to reset WiFi when network error occurs"/>
+                <ToggleSwitch x:Name="uiIgnoreODerror" Header="Do not log OneDrive errors"/>
+                <ToggleSwitch x:Name="uiUseVoice" Header="Voice command interface"/>
+                <ToggleSwitch x:Name="uiUseGPS" Header="location service" OffContent="simulate" OnContent="use GPS" Toggled="uiUseGsp_Toggled"/>
+                <TextBox x:Name="uiLatitude" Header="Latitude" InputScope="Number" Visibility="Collapsed" />
+                <TextBox x:Name="uiLongitude" Header="Longitude" InputScope="Number" Visibility="Collapsed" />
+                <ToggleSwitch x:Name="uiSaveGPSRoam" Header="Use this location" OffContent="on this device" OnContent="on all devices" />
+
+                <Button Content="Save!" HorizontalAlignment="Center" Margin="0,15,0,0" Click="uiOk_Click"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

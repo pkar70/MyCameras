@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="MyCameras.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyCameras"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+
+    <Grid Margin="5,5,5,5" x:Name="uiGrid">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ProgressRing x:Name="uiProcesuje" Grid.RowSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" />
+
+        <TextBlock HorizontalAlignment="Center"  FontSize="18" Text="My Cameras" x:Uid="uiMainTitle"/>
+        <StackPanel Grid.Row="2"  >
+            <Button x:Name="uiBrowser" Content="Znajdz kamerki" HorizontalAlignment="Center" IsEnabled="false"  x:Uid="uiMainBrowser"/>
+            <Button x:Name="uiBasicCamera" Margin="0,30,0,0" Content="to kamerka" HorizontalAlignment="Center" IsEnabled="false"  x:Uid="uiMainCamera"/>
+            <Button x:Name="uiTimer" Margin="0,30,0,0" Content="timer" HorizontalAlignment="Center" Click="uiTimer_Click"  x:Uid="uiMainGoTimer"/>
+            <Button x:Name="uiExit" Margin="0,30,0,0" Content="portal" HorizontalAlignment="Center" Click="uiPogoda_Click" x:Uid="uiMainGoPortal"/>
+        </StackPanel>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal" x:Name="uiBottomBar" >
+            <!-- może być z Icon="Rename" do zmiany nazwy -->
+            <AppBarButton Icon="Refresh" Label="Refresh" Click="uiRefresh_Click"  x:Uid="uiRefresh"/>
+            <AppBarButton Icon="Setting" Label="Settings" Click="uiGoSettings_Click"  x:Uid="uiSettings"/>
+        </CommandBar>
+
+    </Page.BottomAppBar>
+
+</Page>

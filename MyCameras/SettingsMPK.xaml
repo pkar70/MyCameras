@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="MyCameras.SettingsMPK"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyCameras"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
+
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center" FontSize="18" Text="MPK" />
+        <ToggleSwitch x:Name="uiMPKenable" Margin="0,20,0,10" OnContent="Pokazuj odjazdy MPK" OffContent="Nie korzystaj z MPK" />
+
+        <Button Content="Przystanki" x:Name="uiMPKodleglosc" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10" />
+        <Button Content="Kierunki" x:Name="uiMPKkierunki" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10" />
+        <Button Content="Miejsca" x:Name="uiMPKkalendarz"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10" />
+
+        <Button Grid.Row="5" Content="Zapisz!" HorizontalAlignment="Center" Margin="0,20,0,10" Click="uiSave_Click" />
+
+
+    </StackPanel>
+</Page>
